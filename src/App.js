@@ -11,7 +11,7 @@ function App() {
   const useStyles = makeStyles((theme) => ({
     root: {
       position: 'relative',
-      height: '70vh',
+      height: '65vh',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center'
@@ -20,7 +20,7 @@ function App() {
       textAlign: 'center',
     },
     container: {
-      margin: '10vh',
+      margin: '5vh',
     }
   }));
 

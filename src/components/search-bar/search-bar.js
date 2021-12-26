@@ -29,6 +29,7 @@ export default function InputWithIcon({ navigate }) {
 
   return (
     <TextField
+      fullWidth
       className={classes.margin}
       onChange={onChange}
       InputProps={{

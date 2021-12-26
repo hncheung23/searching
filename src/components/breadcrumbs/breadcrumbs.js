@@ -3,8 +3,18 @@ import Typography from "@material-ui/core/Typography";
 import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import "./breadcrumbs.css";
+import { makeStyles } from "@material-ui/core/styles";
+
 
 export default function SimpleBreadcrumbs({ navigate }) {
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      margin: '2rem',
+    },
+  }));
+
+  const classes = useStyles();
+
   const breadcrumbsData = [
     {
       label: "Searching",
@@ -88,6 +98,6 @@ export default function SimpleBreadcrumbs({ navigate }) {
     } else return <Typography color="textPrimary">Searching</Typography>;
   };
   return (
-    <Breadcrumbs aria-label="breadcrumb">{renderBreadcrumb()}</Breadcrumbs>
+    <Breadcrumbs className={classes.root} aria-label="breadcrumb">{renderBreadcrumb()}</Breadcrumbs>
   );
 }
