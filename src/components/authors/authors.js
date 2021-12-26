@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 const URL_PATH = "https://openlibrary.org/search/authors.json";
 
-export default function Authors({navigate}) {
+export default function Authors({navigate, setAuthor}) {
   const p = useParams();
   const [results, setResults] = useState(null);
   const classes = useStyles();
@@ -37,6 +37,7 @@ export default function Authors({navigate}) {
   }, []);
 
   const pushUrl = (data) => {
+    setAuthor(data.name)
     navigate(`/authors/${p.searchingWords}/${data.key}/books`);
   } 
 

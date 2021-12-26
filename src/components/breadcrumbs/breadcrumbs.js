@@ -95,7 +95,7 @@ export default function SimpleBreadcrumbs({ navigate }) {
           )}
         </React.Fragment>
       ));
-    } else return <Typography color="textPrimary">Searching</Typography>;
+    } else return [<Typography key={1} color="textPrimary">Searching</Typography>]
   };
   return (
     <Breadcrumbs className={classes.root} aria-label="breadcrumb">{renderBreadcrumb()}</Breadcrumbs>

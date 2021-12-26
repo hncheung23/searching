@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function InputWithIcon({ navigate }) {
+export default function InputWithIcon({ navigate, setSearchingWords, reset }) {
   const classes = useStyles();
   const [word, setWord] = useState("");
 
@@ -24,6 +24,8 @@ export default function InputWithIcon({ navigate }) {
   }, 300);
 
   const pushUrl = () => {
+    setSearchingWords(word)
+    reset()
     navigate(`/authors/${word}`);
   };
 
