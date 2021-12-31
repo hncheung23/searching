@@ -11,18 +11,18 @@ import React, { useEffect, useState } from "react";
 function App() {
   const useStyles = makeStyles((theme) => ({
     root: {
-      position: 'relative',
-      height: '65vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
+      position: "relative",
+      height: "65vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
     title: {
-      textAlign: 'center',
+      textAlign: "center",
     },
     container: {
-      margin: '5vh',
-    }
+      margin: "5vh",
+    },
   }));
 
   const classes = useStyles();
@@ -30,40 +30,52 @@ function App() {
   const welcomeText = "Try to start with typing somethings";
   const navigate = useNavigate();
 
-  const [searchingWords, setSearchingWords] = useState('')
-  const [author, setAuthor] = useState('')
+  const [searchingWords, setSearchingWords] = useState("");
+  const [author, setAuthor] = useState("");
 
   const reset = () => {
-    setAuthor('')
-  }
-
+    setAuthor("");
+  };
+  
   const renderWelcome = () => {
     return (
       <div className={classes.root}>
-        <div><h1 className={classes.title}>{welcomeText}</h1></div>
+        <div>
+          <h1 className={classes.title}>{welcomeText}</h1>
+        </div>
       </div>
     );
   };
+
+  const ROUTES = [
+    { path: "/", Component: renderWelcome() },
+    {
+      path: "authors/:searchingWords",
+      Component: <Authors navigate={navigate} setAuthor={setAuthor} />,
+    },
+    {
+      path: "/authors/:searchingWords/:authorsId/books",
+      Component: <Books navigate={navigate} />,
+    },
+    {
+      path: "/authors/:searchingWords/:authorsId/books/:bookId",
+      Component: <BookDetail />,
+    },
+  ];
   return (
     <div className={classes.container}>
-      <SearchBar navigate={navigate} reset={reset} setSearchingWords={setSearchingWords}/>
+      <SearchBar
+        navigate={navigate}
+        reset={reset}
+        setSearchingWords={setSearchingWords}
+      />
       <Breadcrumbs navigate={navigate} />
       <div>{`Search term: ${searchingWords}`}</div>
       <div>{`Author: ${author}`}</div>
       <Routes>
-        <Route path="/" element={renderWelcome()} />
-        <Route
-          path="/authors/:searchingWords"
-          element={<Authors navigate={navigate} setAuthor={setAuthor}/>}
-        />
-        <Route
-          path="/authors/:searchingWords/:authorsId/books"
-          element={<Books navigate={navigate} />}
-        />
-        <Route
-          path="/authors/:searchingWords/:authorsId/books/:bookId"
-          element={<BookDetail />}
-        />
+        {ROUTES.map(({ path, Component }, key) => (
+          <Route key={key} path={path} element={Component}/>
+        ))}
       </Routes>
     </div>
   );
