@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardMedia from "@material-ui/core/CardMedia";
 import Chip from "@material-ui/core/Chip";
+import { cardApiPath as URL_PATH } from "../../api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,8 +32,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0.5),
   },
 }));
-
-const URL_PATH = "https://covers.openlibrary.org/b/id/{id}-L.jpg";
 
 export default function SimpleCard({ data }) {
   const classes = useStyles();

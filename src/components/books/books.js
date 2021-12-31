@@ -10,6 +10,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import PersonIcon from "@material-ui/icons/Person";
 import Button from '@material-ui/core/Button';
+import { booksApiPath as URL_PATH } from "../../api";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
     pointerEvents: "auto",
   },
 }));
-
-const URL_PATH = "https://openlibrary.org/authors/{id}/works.json";
 
 export default function Books({navigate}) {
   const p = useParams();
